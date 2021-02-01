@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Decimal
+    </title>
+
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+            background-color: black; 
+            align-items: center;
+            justify-content: center;
+        }
+        .container{
+            display: flex;
+            background-color: white;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            border: 1px solid black;        }
+        #button{
+            margin-top: 20px;
+        }
+
+    </style>
+    
+    <script>
+        window.onload = function() {
+            var decimal = 0
+            var valido = true
+            document.getElementById('button').addEventListener('click', () => {
+            const input = document.getElementById('input').value
+            for (digit in input) {
+                if(input[digit] != '0' && input[digit] != '1'){
+                    valido = false
+                    break
+                } else {
+                    valido = true
+                    if(input[digit] == 1 ){
+                        decimal += 2**(input.length -1 - digit)
+                    }
+            }
+            }
+            valido ? 
+            document.getElementById('result').innerHTML = `Answer: ${decimal}` : 
+            document.getElementById('result').innerHTML = 'Input is not a binary Number'
+            decimal = 0
+        })
+        }
+    </script>
+</head>
+<body>
+    <div class='container'>
+        <label>Enter a binary Number:    
+            <input type='text' id ='input' />
+        </label>
+        <button id='button' >Submit</button>
+        <br>
+        <div id='result'>
+        </div>
+    </div>
+</body>
+</html>
